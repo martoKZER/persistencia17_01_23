@@ -14,4 +14,12 @@ public class ActoresServicios {
 
         return actorRepositorio.findAll();
     }
+    public Actor buscaPorId(String dni) {
+        return actorRepositorio.getReferenceById(dni);
+    }
+
+    public Actor guardaActor(Actor actor) {
+        return actorRepositorio.save(actor);
+    }
+
 }

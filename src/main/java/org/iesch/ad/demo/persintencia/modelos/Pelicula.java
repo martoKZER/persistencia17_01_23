@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class Pelicula {
     int duracion;
     int puntuacion;
 
-    @OneToMany (mappedBy= "pelicula")
-    List<Actor> listaAcotores = new ArrayList<Actor>();
+    @OneToMany (mappedBy= "pelicula", fetch = FetchType.EAGER)
+    List<Actor> listaActores = new ArrayList<Actor>();
 
 }

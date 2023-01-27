@@ -1,12 +1,9 @@
 package org.iesch.ad.demo.persintencia.modelos;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -15,7 +12,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "dni")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "dni")
+@JsonIgnoreProperties("pelicula")
 public class Actor {
     @Id
     @Column (length = 9)
@@ -24,9 +22,6 @@ public class Actor {
     String nombre;
     LocalDate fechaNacimiento;
 
-    @ManyToOne
-    @JoinColumn(name = "pelicula_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     Pelicula pelicula;
-
-
 }
